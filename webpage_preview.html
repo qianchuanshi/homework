@@ -1,0 +1,1017 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>辩证法的硅基演进 | Web PPT</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg-paper: #ffffff;
+      --bg-offset: #f4f6f8;
+      --text-primary: #1a1a1a;
+      --text-secondary: #4a4a4a;
+      --brand-nature-blue: #005f73;
+      --brand-science-red: #ae2012;
+      --accent-gold: #ca6702;
+      --border-subtle: #e5e5e5;
+      --container-width: 1180px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background-color: var(--bg-paper);
+      font-family: 'Inter', sans-serif;
+      color: var(--text-primary);
+      line-height: 1.6;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Playfair Display', serif;
+      line-height: 1.2;
+      color: var(--text-primary);
+    }
+
+    h1 {
+      font-size: clamp(3rem, 5vw, 4.2rem);
+      font-weight: 700;
+      letter-spacing: -1px;
+      margin-bottom: 18px;
+    }
+
+    h2 {
+      font-size: clamp(2rem, 3vw, 2.5rem);
+      font-weight: 700;
+      color: var(--brand-nature-blue);
+      margin-bottom: 18px;
+      position: relative;
+      padding-bottom: 10px;
+    }
+
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 52px;
+      height: 3px;
+      background: var(--brand-science-red);
+    }
+
+    h3 {
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--brand-science-red);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 0.6rem;
+    }
+
+    p, li {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 1.02rem;
+      color: var(--text-secondary);
+      margin-bottom: 0.7rem;
+      line-height: 1.8;
+    }
+
+    li::marker { color: var(--brand-science-red); }
+
+    section { padding: 80px 0; }
+
+    .container {
+      max-width: var(--container-width);
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border-subtle);
+      z-index: 1000;
+      padding: 12px 0;
+    }
+
+    .nav-inner {
+      max-width: var(--container-width);
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--brand-nature-blue);
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-secondary);
+      margin-left: 24px;
+      font-weight: 500;
+      font-size: 0.9rem;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--brand-science-red); }
+
+    /* HERO */
+    .hero {
+      padding-top: 80px;
+      min-height: 480px;
+      background: radial-gradient(circle at 10% 0%, #f0f7f9, #ffffff 45%, #f7f0ff 100%);
+      display: flex;
+      align-items: center;
+    }
+
+    .hero-inner {
+      max-width: var(--container-width);
+      margin: 0 auto;
+      padding: 40px 20px 70px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+      gap: 40px;
+      align-items: center;
+    }
+
+    .hero-text {
+      background: rgba(255, 255, 255, 0.94);
+      padding: 34px 36px 30px;
+      border-left: 5px solid var(--brand-nature-blue);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.08);
+    }
+
+    .hero-subtitle {
+      font-size: 0.85rem;
+      color: var(--brand-science-red);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .hero-tagline {
+      font-size: 1.15rem;
+      margin-bottom: 20px;
+    }
+
+    .hero-meta {
+      font-size: 0.9rem;
+      border-top: 1px solid #ddd;
+      padding-top: 14px;
+      margin-top: 14px;
+      color: var(--text-secondary);
+    }
+
+    .hero-meta strong { color: var(--text-primary); }
+
+    .hero-visual {
+      position: relative;
+    }
+
+    .hero-visual-card {
+      background: #050816;
+      border-radius: 18px;
+      padding: 16px;
+      box-shadow: 0 22px 45px rgba(0, 0, 0, 0.45);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-visual-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 20% 0%, rgba(202, 103, 2, 0.5), transparent 55%),
+        radial-gradient(circle at 80% 100%, rgba(0, 95, 115, 0.5), transparent 55%);
+      opacity: 0.4;
+      pointer-events: none;
+    }
+
+    .hero-image-wrap {
+      position: relative;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+    }
+
+    .hero-image-wrap img {
+      display: block;
+      width: 100%;
+      height: 340px;
+      object-fit: cover;
+    }
+
+    .hero-caption {
+      position: absolute;
+      bottom: 12px;
+      left: 14px;
+      right: 14px;
+      font-size: 0.78rem;
+      color: #f5f5f5;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+    }
+
+    .hero-caption span {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      font-size: 0.72rem;
+      margin-bottom: 6px;
+    }
+
+    /* SLIDE VIEWER */
+    #slides { background: var(--bg-offset); }
+
+    .slides-wrapper {
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(0, 2fr);
+      gap: 30px;
+    }
+
+    .slides-sidebar {
+      background: #ffffff;
+      border-radius: 10px;
+      padding: 18px 14px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+      max-height: 680px;
+      overflow-y: auto;
+    }
+
+    .slides-sidebar h3 { margin-bottom: 8px; }
+
+    .slides-sidebar p {
+      font-size: 0.9rem;
+      margin-bottom: 12px;
+    }
+
+    .page-list {
+      list-style: none;
+    }
+
+    .page-list li { margin-bottom: 5px; }
+
+    .page-tab {
+      width: 100%;
+      text-align: left;
+      padding: 8px 10px;
+      border-radius: 6px;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      font-size: 0.88rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--text-secondary);
+      transition: background 0.18s, color 0.18s, transform 0.08s;
+    }
+
+    .page-tab span {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.75rem;
+      min-width: 32px;
+      text-align: center;
+      padding: 2px 6px;
+      border-radius: 999px;
+      border: 1px solid var(--border-subtle);
+    }
+
+    .page-tab strong {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.88rem;
+    }
+
+    .page-tab.active {
+      background: #f0f7f9;
+      color: var(--brand-nature-blue);
+      transform: translateX(2px);
+    }
+
+    .page-tab.active span {
+      background: var(--brand-nature-blue);
+      color: #ffffff;
+      border-color: var(--brand-nature-blue);
+    }
+
+    .slides-main {
+      background: #ffffff;
+      border-radius: 14px;
+      padding: 26px 26px 26px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.06);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .slide-page {
+      display: none;
+      animation: fadeIn 0.25s ease;
+    }
+
+    .slide-page.active {
+      display: grid;
+      grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+      gap: 24px;
+    }
+
+    .slide-heading { margin-bottom: 10px; }
+
+    .slide-heading h2::after { display: none; }
+
+    .sub-en {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.86rem;
+      font-style: italic;
+      color: var(--text-secondary);
+    }
+
+    .slide-content ul { padding-left: 1.1rem; }
+
+    .slide-content ul ul { margin-top: 0.2rem; }
+
+    .slide-visual {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      background: linear-gradient(135deg, #050816, #12232e);
+      min-height: 240px;
+      display: flex;
+      align-items: stretch;
+      justify-content: center;
+    }
+
+    .slide-visual-inner {
+      padding: 16px 16px 14px;
+      color: #f5f5f5;
+      width: 100%;
+    }
+
+    .slide-visual-inner h4 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      font-family: 'Inter', sans-serif;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .slide-visual-inner p {
+      font-size: 0.9rem;
+      color: #d9e4ec;
+    }
+
+    .slide-visual-note {
+      margin-top: 8px;
+      font-size: 0.8rem;
+      color: #b8c9d2;
+      font-style: italic;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    footer {
+      background: var(--text-primary);
+      color: white;
+      padding: 60px 0;
+      text-align: center;
+    }
+
+    .quote-large {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.8rem;
+      color: var(--accent-gold);
+      margin-bottom: 20px;
+      display: block;
+    }
+
+    footer p {
+      color: #ccc;
+      max-width: 680px;
+      margin: 0 auto 16px;
+    }
+
+    @media (max-width: 980px) {
+      .hero-inner { grid-template-columns: 1fr; }
+      .slides-wrapper { grid-template-columns: 1fr; }
+      .slide-page.active { grid-template-columns: 1fr; }
+      .slides-sidebar { max-height: none; }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      section { padding: 60px 0; }
+      .hero-text { padding: 26px; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-inner">
+      <div class="logo">JOURNAL OF DIALECTICS</div>
+      <div class="nav-links">
+        <a href="#top">Home</a>
+        <a href="#slides">Pages</a>
+        <a href="#summary">Summary</a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="hero" id="top">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <div class="hero-subtitle">RESEARCH DEFENSE</div>
+        <h1>
+          辩证法的硅基演进<br />
+          <span style="font-size: 0.6em; font-weight: 400; font-style: italic;">
+            The Silicon Evolution of Dialectics
+          </span>
+        </h1>
+        <p class="hero-tagline">
+          论 AI 作为科学探索主体对人类科学家的必然替代：<br />
+          基于自然辩证法视角的科学范式革命。
+        </p>
+        <div class="hero-meta">
+          <strong>汇报人：</strong> Ai科学家会取代人类科学家-9组
+          &nbsp;|&nbsp;
+          <strong>领域：</strong> 科学哲学 &amp; 人工智能
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="hero-visual-card">
+          <div class="hero-image-wrap">
+            <!-- 在这里替换为你真实制作的维特鲁威人半肉体半数字化图像 -->
+            <img src="vitruvian-ai-hybrid.jpg" alt="Vitruvian Man, half biological half digital" />
+            <div class="hero-caption">
+              <span>CORE VISUAL</span><br />
+              维特鲁威人从左至右逐渐被像素、线框与电路纹理重写——
+              象征科学主体从碳基大脑向硅基智能的历史性迁移。
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="slides">
+    <div class="container">
+      <h2>网页版答辩 PPT · 点击左侧切换 16 页</h2>
+      <div class="slides-wrapper">
+        <aside class="slides-sidebar">
+          <h3>页面导航</h3>
+          <p>适合演讲时边点边讲，也可以给评委当在线讲义。</p>
+          <ul class="page-list">
+            <li><button class="page-tab active" data-target="page1"><span>P1</span><strong> 题目 & 核心视觉</strong></button></li>
+            <li><button class="page-tab" data-target="page2"><span>P2</span><strong> 核心定义：祛魅“科学家”</strong></button></li>
+            <li><button class="page-tab" data-target="page3"><span>P3</span><strong> 哲学依据总览</strong></button></li>
+            <li><button class="page-tab" data-target="page4"><span>P4</span><strong> 论证一：量变引起质变</strong></button></li>
+            <li><button class="page-tab" data-target="page5"><span>P5</span><strong> 论证二：否定之否定</strong></button></li>
+            <li><button class="page-tab" data-target="page6"><span>P6</span><strong> 实践维度：全自动闭环</strong></button></li>
+            <li><button class="page-tab" data-target="page7"><span>P7</span><strong> 认知维度：看见不可见</strong></button></li>
+            <li><button class="page-tab" data-target="page8"><span>P8</span><strong> 创造维度：从发现到生成</strong></button></li>
+            <li><button class="page-tab" data-target="page9"><span>P9</span><strong> 社会维度：科学劳动异化</strong></button></li>
+            <li><button class="page-tab" data-target="page10"><span>P10</span><strong> 中场小结：替代矩阵</strong></button></li>
+            <li><button class="page-tab" data-target="page11"><span>P11</span><strong> 驳斥一：随机鹦鹉？</strong></button></li>
+            <li><button class="page-tab" data-target="page12"><span>P12</span><strong> 驳斥二：直觉与意识？</strong></button></li>
+            <li><button class="page-tab" data-target="page13"><span>P13</span><strong> 驳斥三：AI 会幻觉？</strong></button></li>
+            <li><button class="page-tab" data-target="page14"><span>P14</span><strong> 驳斥四：伦理与责任</strong></button></li>
+            <li><button class="page-tab" data-target="page15"><span>P15</span><strong> 未来展望：第四次革命</strong></button></li>
+            <li><button class="page-tab" data-target="page16"><span>P16</span><strong> 结语：迈向自由王国</strong></button></li>
+          </ul>
+        </aside>
+
+        <div class="slides-main">
+          <!-- P1 -->
+          <article class="slide-page active" id="page1">
+            <div class="slide-text">
+              <div class="slide-heading">
+                <h3>Page 1</h3>
+                <h2>辩题 & 核心视觉</h2>
+                <div class="sub-en">Topic & Core Visual</div>
+              </div>
+              <div class="slide-content">
+                <ul>
+                  <li><strong>演讲主题：</strong>辩证法的硅基演进——论 AI 作为科学探索主体对人类科学家的必然替代。</li>
+                  <li><strong>汇报人：</strong>Ai科学家会取代人类科学家-9组。</li>
+                  <li><strong>核心隐喻：</strong>维特鲁威人一半是肉体、一半逐渐数字化 / 机械化，象征科学主体从“人类”向“AI 主导”的迁移。</li>
+                </ul>
+              </div>
+            </div>
+            <div class="slide-visual">
+              <div class="slide-visual-inner">
+                <h4>视觉设计提示</h4>
+                <p>左半边保留达芬奇原画质感，右半边叠加电路板、像素、网格线与机械臂等元素，用一条竖直的“数据分割线”贯穿其间。</p>
+                <div class="slide-visual-note">适合作为整场答辩的封面 + 海报。</div>
+              </div>
+            </div>
+          </article>
+
+          <!-- P2 -->
+          <article class="slide-page" id="page2">
+            <div class="slide-text">
+              <div class="slide-heading">
+                <h3>Page 2</h3>
+                <h2>核心定义：祛魅“科学家”</h2>
+                <div class="sub-en">Demystifying "The Scientist"</div>
+              </div>
+              <div class="slide-content">
+                <ul>
+                  <li><strong>核心观点：</strong>“科学家”的本质是功能（Function），而非生物属性（Biological Attribute）。</li>
+                  <li><strong>定义的重构：</strong>
+                    <ul>
+                      <li>传统误区：科学家必须是人类，必须具有人脑与肉体感官。</li>
+                      <li>本质定义：凡能提出假说、设计验证、总结规律并推动知识体系发展的认知主体，皆可称为科学家。</li>
+                    </ul>
+                  </li>
+                  <li><strong>取代的含义：</strong>
+                    <ul>
+                      <li>并非消灭人类，而是科学发现主体地位的转移（主次易位）。</li>
+                      <li>人类角色：从“操作者 / 发现者” → “伦理监督者 / 提示词工程师”。</li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="slide-visual">
+              <div class="slide-visual-inner">
+                <h4>视觉设计提示</h4>
+                <p>画面左侧是戴眼镜的人类科学家剪影，右侧是由几何线条勾勒的 AI 轮廓，中间用 f(x)、箭头和流程图符号连接，写上 “Scientist = Function”。</p>
+                <div class="slide-visual-note">用极简线稿对比“人头”与“芯片图标”，强化“祛魅”的感觉。</div>
+              </div>
+            </div>
+          </article>
+
+          <!-- P3 -->
+          <article class="slide-page" id="page3">
+            <div class="slide-text">
+              <div class="slide-heading">
+                <h3>Page 3</h3>
+                <h2>哲学依据总览</h2>
+                <div class="sub-en">Natural Dialectics Overview</div>
+              </div>
+              <div class="slide-content">
+                <p><strong>自然辩证法的三大支撑：</strong></p>
+                <ul>
+                  <li><strong>1. 量变引起质变：</strong>数据维度爆发 → 人类认知极限失效，AI 实现对人脑的“降维打击”。</li>
+                  <li><strong>2. 否定之否定：</strong>科研模式从“手工”到“自动化辅助”再到“AI 自主科研”的螺旋上升。</li>
+                  <li><strong>3. 异化理论与主客体倒置：</strong>科学劳动外化，人类从科学发现主体退居为客体环境的一部分。</li>
+                </ul>
+              </div>
+            </div>
+            <div class="slide-visual">
+              <div class="slide-visual-inner">
+                <h4>视觉设计提示</h4>
+                <p>用三段式时间轴：左“量变→质变”、中“否定之否定”、右“异化与主客体倒置”，每一段配简洁图标（数据流、螺旋箭头、人形与机器手对峙）。</p>
+                <div class="slide-visual-note">适合作为整场论证的“地图页”。</div>
+              </div>
+            </div>
+          </article>
+
+          <!-- P4 -->
+          <article class="slide-page" id="page4">
+            <div class="slide-text">
+              <div class="slide-heading">
+                <h3>Page 4</h3>
+                <h2>论证一：量变引起质变</h2>
+                <div class="sub-en">Cognitive Transcendence</div>
+              </div>
+              <div class="slide-content">
+                <ul>
+                  <li><strong>痛点：</strong>人类大脑“7±2”工作记忆极限，难以应对现代科学的海量高维数据。</li>
+                  <li><strong>AI 的质变——AlphaFold 案例：</strong>
+                    <ul>
+                      <li>量：学习 PDB 数据库几乎所有已知蛋白质结构。</li>
+                      <li>质：直接“理解”折叠规律，解决人类 50 年未解难题。</li>
+                    </ul>
+                  </li>
+                  <li><strong>哲学解释：</strong>当数据量突破临界点，旧的认知主体（人脑）必然被新的认知主体（AI）取代，这是典型的“量变引起质变”。</li>
+                </ul>
+              </div>
+            </div>
+            <div class="slide-visual">
+              <div class="slide-visual-inner">
+                <h4>视觉设计提示</h4>
+                <p>左侧用一排排“7±2”小方块象征人类记忆上限，右侧是密集的数据矩阵与神经网络结构，中间用“临界点”标记打断，说明从量变跨越到质变。</p>
+                <div class="slide-visual-note">可以把 AlphaFold 的蛋白质彩色结构图放在背景里淡化呈现。</div>
+              </div>
+            </div>
+          </article>
+
+          <!-- P5 -->
+          <article class="slide-page" id="page5">
+            <div class="slide-text">
+              <div class="slide-heading">
+                <h3>Page 5</h3>
+                <h2>论证二：否定之否定</h2>
+                <div class="sub-en">From Assistance to Autonomy</div>
+              </div>
+              <div class="slide-content">
+                <ul>
+                  <li><strong>科学发现模式的演进：</strong>
+                    <ul>
+                      <li>① 肯定（正题）：手工作坊 —— 依赖个人直觉，效率低。</li>
+                      <li>② 否定（反题）：自动化辅助 —— 人主导，机器执行。</li>
+                      <li>③ 否定之否定（合题）：AI 自主科研 —— AI 主导，机器执行，自我修正。</li>
+                    </ul>
+                  </li>
+                  <li><strong>关键特征：</strong>AI 不再是被动工具，而是具备“自我否定”和“自我修正”的认知主体。</li>
+                </ul>
+              </div>
+            </div>
+            <div class="slide-visual">
+              <div class="slide-visual-inner">
+                <h4>视觉设计提示</h4>
+                <p>用螺旋上升的三层阶梯：底层是手动实验，中层是自动化流水线，顶层是 AI-Driven Lab，每一层配简短标签“正题 / 反题 / 合题”。</p>
+                <div class="slide-visual-note">螺旋线条可以呼应“否定之否定”的哲学意象。</div>
+              </div>
+            </div>
+          </article>
+
+          <!-- P6 -->
+          <article class="slide-page" id="page6">
+            <div class="slide-text">
+              <div class="slide-heading">
+                <h3>Page 6</h3>
+                <h2>实践维度的替代：全自动闭环</h2>
+                <div class="sub-en">The Experimental Loop</div>
+              </div>
+              <div class="slide-content">
+                <ul>
+                  <li><strong>案例：A-Lab (全自动实验室)</strong>
+                    <ul>
+                      <li>流程：AI 读文献 → 提配方 → 机器人合成 → XRD 分析 → AI 自主修正。</li>
+                      <li>数据：17 天无人值守，成功率 71%，在失败中不断学习。</li>
+                    </ul>
+                  </li>
+                  <li><strong>案例：CRESt</strong>
+                    <ul>
+                      <li>3 个月自主探索 900 种配方，发现新催化剂。</li>
+                    </ul>
+                  </li>
+                  <li><strong>结论：</strong>AI 已接管“实验验证”这一科学家的核心实践职能，实现了从假说到实验的闭环。</li>
+                </ul>
+              </div>
+            </div>
+            <div class="slide-visual">
+              <div class="slide-visual-inner">
+                <h4>视觉设计提示</h4>
+                <p>画一个闭环流程图：文献语料 → 模型 → 配方 → 机器人 → 仪器 → 数据 → 模型更新，用醒目的 LOOP 箭头强调“无人值守”的循环。</p>
+                <div class="slide-visual-note">可以加上机械臂和实验设备的线稿图标，让“实验室感”更强。</div>
+              </div>
+            </div>
+          </article>
+
+          <!-- P7 -->
+          <article class="slide-page" id="page7">
+            <div class="slide-text">
+              <div class="slide-heading">
+                <h3>Page 7</h3>
+                <h2>认知维度的替代：看见不可见之物</h2>
+                <div class="sub-en">Seeing the Invisible</div>
+              </div>
+              <div class="slide-content">
+                <ul>
+                  <li><strong>人类的局限：</strong>受限于三维空间感知和静态观测手段。</li>
+                  <li><strong>AI 的超越：</strong>
+                    <ul>
+                      <li>隐蔽口袋（Cryptic Pockets）：AlphaFold 生成的动态系综发现了传统晶体学无法观察的药物靶点。</li>
+                      <li>GNoME（材料学）：在图神经网络的高维空间中游走，一次性预测 220 万种新晶体，相当于人类 800 年积累。</li>
+                    </ul>
+                  </li>
+                  <li><strong>结论：</strong>在认知深度（看见本质）与广度（穷尽搜索）上，AI 已经对人类形成系统性碾压。</li>
+                </ul>
+              </div>
+            </div>
+            <div class="slide-visual">
+              <div class="slide-visual-inner">
+                <h4>视觉设计提示</h4>
+                <p>一侧是模糊的 3D 蛋白结构，另一侧是清晰的动态能量地形图，高维空间以网格和点云形式呈现，表示 AI 在“看见人类看不见的结构”。</p>
+                <div class="slide-visual-note">可以用暗色背景 + 荧光色线条做“科学可视化”的效果。</div>
+              </div>
+            </div>
+          </article>
+
+          <!-- P8 -->
+          <article class="slide-page" id="page8">
+            <div class="slide-text">
+              <div class="slide-heading">
+                <h3>Page 8</h3>
+                <h2>创造维度的替代：从“发现”到“生成”</h2>
+                <div class="sub-en">Generative Science</div>
+              </div>
+              <div class="slide-content">
+                <ul>
+                  <li><strong>生成式科学（Generative Science）：</strong>
+                    <ul>
+                      <li>RFdiffusion：不是在数据库里“找”（发现），而是用扩散模型从噪点中“画”出自然界不存在的蛋白质。</li>
+                      <li>BoltzGen：从零设计生物靶点的结合分子。</li>
+                    </ul>
+                  </li>
+                  <li><strong>哲学意义：</strong>科学从“反映论”（认识自然）转向“生成论”（设计自然），AI 成为新物质、新结构的“造物主”。</li>
+                </ul>
+              </div>
+            </div>
+            <div class="slide-visual">
+              <div class="slide-visual-inner">
+                <h4>视觉设计提示</h4>
+                <p>背景是一团噪点 / 雾气，前景逐渐显现出清晰的蛋白结构或分子图案，用时间轴或渐变来表示“从随机到有序”的生成过程。</p>
+                <div class="slide-visual-note">可以在角落加小字：“From Discovery to Design”。</div>
+              </div>
+            </div>
+          </article>
+
+          <!-- P9 -->
+          <article class="slide-page" id="page9">
+            <div class="slide-text">
+              <div class="slide-heading">
+                <h3>Page 9</h3>
+                <h2>社会维度的替代：科学劳动的异化</h2>
+                <div class="sub-en">Social Dimension & Alienation</div>
+              </div>
+              <div class="slide-content">
+                <ul>
+                  <li><strong>现象：Sakana AI "The AI Scientist"</strong>
+                    <ul>
+                      <li>全流程：从 idea 提出到代码编写、论文撰写、互相评审几乎全自动。</li>
+                      <li>成本：生成一篇完整论文仅需约 $15。</li>
+                    </ul>
+                  </li>
+                  <li><strong>马克思异化理论视角：</strong>
+                    <ul>
+                      <li>科研劳动过程与人类剥离，人类科学家面临“无产阶级化”（AI precariat）。</li>
+                      <li>当 AI 既是作者又是评审，科学共同体的结构被彻底重构。</li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="slide-visual">
+              <div class="slide-visual-inner">
+                <h4>视觉设计提示</h4>
+                <p>用生产线隐喻：流水线上源源不断输出“论文 PDF”，操作员从人类逐渐变成算法图标，屏幕上显示“$15 / paper”。</p>
+                <div class="slide-visual-note">可以用冷色调表现“异化感”和“去人性化”。</div>
+              </div>
+            </div>
+          </article>
+
+          <!-- P10 -->
+          <article class="slide-page" id="page10">
+            <div class="slide-text">
+              <div class="slide-heading">
+                <h3>Page 10</h3>
+                <h2>中场小结：全方位替代矩阵</h2>
+                <div class="sub-en">Replacement Matrix</div>
+              </div>
+              <div class="slide-content">
+                <p>从认知、实践、创造、社会四个维度，对比人类科学家与 AI 科学家的能力与逻辑。</p>
+                <ul>
+                  <li><strong>认知：</strong>人类依赖直觉、低维；AI 擅长高维模式识别 —— 量变引起质变。</li>
+                  <li><strong>实践：</strong>人类手工、易疲劳；AI 7x24 小时闭环 —— 否定之否定。</li>
+                  <li><strong>创造：</strong>人类路径依赖、仿生；AI 生成式设计 —— 生产力跃迁。</li>
+                  <li><strong>社会：</strong>人类成本高、周期长；AI $15/篇，极速产出 —— 劳动异化。</li>
+                </ul>
+              </div>
+            </div>
+            <div class="slide-visual">
+              <div class="slide-visual-inner">
+                <h4>视觉设计提示</h4>
+                <p>做一个 4×3 的简洁表格，行是“认知 / 实践 / 创造 / 社会”，列是“人类科学家 / AI 科学家 / 替代理由”，用高亮色块标出 AI 侧。</p>
+                <div class="slide-visual-note">可以直接照这个矩阵去做正式 PPT 表格。</div>
+              </div>
+            </div>
+          </article>
+
+          <!-- P11 -->
+          <article class="slide-page" id="page11">
+            <div class="slide-text">
+              <div class="slide-heading">
+                <h3>Page 11</h3>
+                <h2>驳斥一：AI只是“随机鹦鹉”？</h2>
+                <div class="sub-en">Objection 1: Mere Stochastic Parrot?</div>
+              </div>
+              <div class="slide-content">
+                <ul>
+                  <li><strong>反方观点：</strong>AI 只是拼凑已有知识，无法真正创新。</li>
+                  <li><strong>我方反驳：</strong>
+                    <ul>
+                      <li>事实：AlphaGo 的“第 37 手”、Halicin 抗生素发现，都是人类未曾设想的全新解。</li>
+                      <li>理论：创造力本质是可能性空间中的搜索，AI 把人类靠运气的“偶然发现”变成了算法驱动的“必然搜索”。</li>
+                      <li>证据：RFdiffusion 创造了自然界不存在的蛋白质结构。</li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="slide-visual">
+              <div class="slide-visual-inner">
+                <h4>视觉设计提示</h4>
+                <p>对比图：左边是一只“鹦鹉 + 引号”的漫画，小而灰；右边是复杂的搜索空间 / 博弈树，节点中高亮“非人类直觉”的解法。</p>
+                <div class="slide-visual-note">配上“From Parrot to Planner”的英文小标题也可以。</div>
+              </div>
+            </div>
+          </article>
+
+          <!-- P12 -->
+          <article class="slide-page" id="page12">
+            <div class="slide-text">
+              <div class="slide-heading">
+                <h3>Page 12</h3>
+                <h2>驳斥二：AI没有直觉和意识？</h2>
+                <div class="sub-en">Objection 2: No Intuition, No Consciousness?</div>
+              </div>
+              <div class="slide-content">
+                <ul>
+                  <li><strong>反方观点：</strong>科学需要人类的顿悟和直觉。</li>
+                  <li><strong>我方反驳：</strong>
+                    <ul>
+                      <li>直觉本质：是对高维模式的模糊识别，AI 的“硅基直觉”在维度和准确度上反而更强。</li>
+                      <li>意识非必要：科学追求的是客观真理，机器人科学家 Adam 在“无意识”状态下照样能发现基因功能。</li>
+                      <li>结论：不管黑猫白猫，能发现真理的就是好“猫”。</li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="slide-visual">
+              <div class="slide-visual-inner">
+                <h4>视觉设计提示</h4>
+                <p>画两只“猫”：一只是写着 Human Intuition 的黑猫，另一只是写着 AI Pattern 的白猫，两只猫都在抓“Truth”的老鼠。</p>
+                <div class="slide-visual-note">有一点幽默感，可以缓和哲学讨论的紧张氛围。</div>
+              </div>
+            </div>
+          </article>
+
+          <!-- P13 -->
+          <article class="slide-page" id="page13">
+            <div class="slide-text">
+              <div class="slide-heading">
+                <h3>Page 13</h3>
+                <h2>驳斥三：AI会产生幻觉，不可靠？</h2>
+                <div class="sub-en">Objection 3: Hallucinations?</div>
+              </div>
+              <div class="slide-content">
+                <ul>
+                  <li><strong>反方观点：</strong>AI 会一本正经胡说八道，不能信任。</li>
+                  <li><strong>我方反驳：</strong>
+                    <ul>
+                      <li>人类也会犯错：P-hacking、确认偏误是人类科研的通病。</li>
+                      <li>自我修正机制：A-Lab 表明 AI 可以通过实验反馈修正错误，这种“否定之否定”的闭环比单纯同行评审更高效。</li>
+                      <li>验证性：科学结论最终看实验验证，而非产生过程是否“叙事上好听”。</li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="slide-visual">
+              <div class="slide-visual-inner">
+                <h4>视觉设计提示</h4>
+                <p>左侧是“人类 P-hacking”的新闻剪影或图标，右侧是带反馈箭头的 AI 实验闭环，用绿钩表示通过实验验证的结果。</p>
+                <div class="slide-visual-note">用对比方式告诉观众：问题不是“AI 会不会错”，而是谁更善于改正错误。</div>
+              </div>
+            </div>
+          </article>
+
+          <!-- P14 -->
+          <article class="slide-page" id="page14">
+            <div class="slide-text">
+              <div class="slide-heading">
+                <h3>Page 14</h3>
+                <h2>驳斥四：伦理与责任谁承担？</h2>
+                <div class="sub-en">Objection 4: Ethics & Responsibility</div>
+              </div>
+              <div class="slide-content">
+                <ul>
+                  <li><strong>反方观点：</strong>AI 不能承担法律责任，所以不能做科学家。</li>
+                  <li><strong>我方反驳：</strong>
+                    <ul>
+                      <li>责任 ≠ 功能：不能因为“谁负责”的问题否认“谁在做”这一事实。</li>
+                      <li>制度设计：类似自动驾驶，通过法律将责任归属开发者或使用者，不影响 AI 作为科学发现主体的功能地位。</li>
+                      <li>人机分工：人类负责伦理红线和价值判断（裁判员），AI 负责科学探索和技术突破（运动员）。</li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="slide-visual">
+              <div class="slide-visual-inner">
+                <h4>视觉设计提示</h4>
+                <p>画一座“球场”：看台上是人类法官与伦理委员会，场上奔跑的是带 AI 标识的运动员，象征“裁判 / 运动员”的分工。</p>
+                <div class="slide-visual-note">也可以用法槌 + 芯片并列的象征图标。</div>
+              </div>
+            </div>
+          </article>
+
+          <!-- P15 -->
+          <article class="slide-page" id="page15">
+            <div class="slide-text">
+              <div class="slide-heading">
+                <h3>Page 15</h3>
+                <h2>未来展望：科学范式的第四次革命</h2>
+                <div class="sub-en">The Fourth Scientific Paradigm</div>
+              </div>
+              <div class="slide-content">
+                <ul>
+                  <li><strong>范式转换：</strong>经验范式 → 理论范式 → 计算范式 → AI 自主发现范式 (AI4S)。</li>
+                  <li><strong>人类的新角色：</strong>
+                    <ul>
+                      <li>问题的定义者（提出 Prompt）。</li>
+                      <li>伦理的守门人（Value Alignment）。</li>
+                      <li>AI 系统的维护者与调度者。</li>
+                    </ul>
+                  </li>
+                  <li><strong>趋势：</strong>科学将演变为 AI 与 AI 的对话，人类理性的边界被 AI 无限拓展。</li>
+                </ul>
+              </div>
+            </div>
+            <div class="slide-visual">
+              <div class="slide-visual-inner">
+                <h4>视觉设计提示</h4>
+                <p>用四段连续时间轴：纸笔实验、公式与方程、计算机网格、最后是两个对话气泡里都写着“AI”，人类站在旁边设定目标与约束。</p>
+                <div class="slide-visual-note">可以把 “AI4S” 作为最后一段的大标题放在图中间。</div>
+              </div>
+            </div>
+          </article>
+
+          <!-- P16 -->
+          <article class="slide-page" id="page16">
+            <div class="slide-text">
+              <div class="slide-heading">
+                <h3>Page 16</h3>
+                <h2>结语：走向更高的自由王国</h2>
+                <div class="sub-en">Closing Remarks</div>
+              </div>
+              <div class="slide-content">
+                <ul>
+                  <li><strong>核心金句：</strong>“自由是对必然的认识”（恩格斯）。</li>
+                  <li><strong>总结：</strong>
+                    <ul>
+                      <li>AI 在认知、实践、创造维度全面超越人类，是生产力发展的客观规律。</li>
+                      <li>承认并拥抱这一“取代”，是人类摆脱低效脑力劳动、迈向更高自由王国的必由之路。</li>
+                      <li>最终结论：AI 科学家必然取代人类科学家，这是科学进化的内在逻辑和终极形态。</li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="slide-visual">
+              <div class="slide-visual-inner">
+                <h4>视觉设计提示</h4>
+                <p>远景是一扇打开的“光之门”，门内是由公式、数据流和星空组成的世界，人类与 AI 并肩而立，向内走去。</p>
+                <div class="slide-visual-note">适合作为最后一页，让观众留下“未来感 + 哲学感”的印象。</div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer id="summary">
+    <div class="container">
+      <span class="quote-large">“自由是对必然的认识” — 恩格斯</span>
+      <p>
+        通过自然辩证法的三大规律与当代 AI for Science 的前沿实践，这套网页版 PPT 呈现了一个激进但自洽的论题：
+        AI 将从工具演变为科学探索主体，人类则在分工中获得新的自由。
+      </p>
+      <p style="font-size: 0.85rem; opacity: 0.7;">
+        提示：你可以直接把每一页内容复制进 PPT，或在浏览器 F11 全屏展示，作为正式答辩用稿。
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    // 简单的 Tab 切换逻辑
+    const tabs = document.querySelectorAll('.page-tab');
+    const pages = document.querySelectorAll('.slide-page');
+
+    tabs.forEach((tab) => {
+      tab.addEventListener('click', () => {
+        const targetId = tab.getAttribute('data-target');
+
+        tabs.forEach((t) => t.classList.remove('active'));
+        pages.forEach((p) => p.classList.remove('active'));
+
+        tab.classList.add('active');
+        const targetPage = document.getElementById(targetId);
+        if (targetPage) targetPage.classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>
