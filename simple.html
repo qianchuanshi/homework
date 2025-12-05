@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>辩证法的硅基演进 - 简化版</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { margin: 0; padding: 0; }
+    
+    /* 音量滑块样式 */
+    .volume-slider::-webkit-slider-thumb {
+      appearance: none;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #06b6d4;
+      cursor: pointer;
+      border: 2px solid #fff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+    
+    .volume-slider::-moz-range-thumb {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #06b6d4;
+      cursor: pointer;
+      border: 2px solid #fff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+    
+    .volume-slider:focus {
+      outline: none;
+    }
+  </style>
+</head>
+<body>
+  <div id="app" class="min-h-screen bg-slate-950 text-slate-200">
+    <!-- 简单版本，不依赖 React -->
+    <header class="relative pt-24 pb-16 px-4 md:px-8 max-w-5xl mx-auto text-center z-10">
+      <h1 class="text-5xl md:text-7xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600">
+        辩证法的硅基演进
+      </h1>
+      <p class="text-xl md:text-2xl text-slate-400 mb-4">
+        The Silicon Evolution of Dialectics
+      </p>
+      <p class="text-lg text-slate-500 max-w-2xl mx-auto mb-8">
+        论 AI 作为科学探索主体对人类科学家的必然替代
+      </p>
+      
+      <!-- 音频播放器 -->
+      <div class="bg-slate-800/80 backdrop-blur-md border border-cyan-500/30 rounded-xl p-6 mb-12 max-w-2xl mx-auto shadow-lg shadow-cyan-900/20">
+        <div class="flex items-center justify-between mb-4">
+          <div>
+            <h3 class="text-lg font-bold text-white mb-1">辩证法的硅基演进</h3>
+            <p class="text-sm text-slate-400">播客节目</p>
+          </div>
+        </div>
+        
+        <audio id="audioPlayer" src="./assets/audio/podcast.m4a" preload="auto"></audio>
+        
+        <div class="flex items-center gap-4">
+          <button 
+            id="playBtn"
+            onclick="togglePlay()"
+            class="bg-cyan-500 hover:bg-cyan-400 text-slate-900 rounded-full p-3 transition-all transform hover:scale-105"
+          >
+            <svg id="playIcon" class="w-6 h-6 fill-current ml-1" viewBox="0 0 24 24">
+              <path d="M8 5v14l11-7z"/>
+            </svg>
+            <svg id="pauseIcon" class="w-6 h-6 fill-current hidden" viewBox="0 0 24 24">
+              <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/>
+            </svg>
+          </button>
+          
+          <div class="flex-1">
+            <div 
+              id="progressBar"
+              class="h-2 bg-slate-700 rounded-full overflow-hidden cursor-pointer relative"
+              style="touch-action: none;"
+            >
+              <div id="progressFill" class="h-full bg-cyan-500 relative" style="width: 0%">
+                <div class="absolute right-0 top-1/2 -translate-y-1/2 w-3 h-3 bg-white rounded-full shadow-lg cursor-grab active:cursor-grabbing"></div>
+              </div>
+            </div>
+            <div class="flex justify-between text-[10px] text-slate-400 mt-1 font-mono">
+              <span id="currentTime">0:00</span>
+              <span id="duration">0:00</span>
+            </div>
+          </div>
+          
+          <div class="flex items-center gap-2 group">
+            <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+            </svg>
+            <input 
+              type="range" 
+              id="volumeControl"
+              min="0" 
+              max="1" 
+              step="0.01" 
+              value="1"
+              class="w-20 h-1 bg-slate-700 rounded-full appearance-none cursor-pointer volume-slider"
+              style="background: linear-gradient(to right, #06b6d4 0%, #06b6d4 100%, #334155 100%, #334155 100%);"
+            />
+            <span id="volumeValue" class="text-[10px] text-slate-400 font-mono w-8">100%</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-6 py-12 z-10 relative space-y-24">
+      
+      <section>
+        <div class="mb-12 relative">
+          <div class="absolute -top-6 -left-4 text-8xl font-black text-slate-800/50 select-none z-0 font-serif">04</div>
+          <div class="relative z-10 pl-2">
+            <h2 class="text-3xl md:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500 mb-2">
+              深度问答：回应质疑与迷思
+            </h2>
+            <p class="text-slate-400 font-serif italic border-l-2 border-cyan-500/50 pl-3">
+              Q&A: Addressing the Skeptics
+            </p>
+          </div>
+        </div>
+        
+        <div class="space-y-2">
+          <div class="border-b border-slate-700">
+            <button onclick="toggleFAQ(0)" class="w-full text-left py-6 flex items-center justify-between group focus:outline-none">
+              <span class="text-lg font-medium text-slate-200 group-hover:text-cyan-400 transition-colors pr-8">
+                Q1: AI没有"意识"和"直觉"，怎么做科学家？
+              </span>
+              <span id="chevron-0" class="text-slate-500 group-hover:text-cyan-500">▼</span>
+            </button>
+            <div id="answer-0" class="hidden overflow-hidden">
+              <div class="bg-slate-800/30 p-4 rounded-lg border-l-4 border-cyan-500 text-slate-300 leading-relaxed mb-6">
+                <strong>科学不需要灵魂，只需要真理。</strong> 所谓的"直觉"，本质上是大脑对高维模式的模糊识别。AI 拥有的 "硅基直觉"（如 AlphaGo 的第37手，或 GNoME 发现的反直觉晶体）比人类更精准、更广阔。机器人科学家 Adam 在完全无意识的状态下独立发现了基因功能，证明了主观体验并非科学发现的必要条件。
+              </div>
+            </div>
+          </div>
+
+          <div class="border-b border-slate-700">
+            <button onclick="toggleFAQ(1)" class="w-full text-left py-6 flex items-center justify-between group focus:outline-none">
+              <span class="text-lg font-medium text-slate-200 group-hover:text-cyan-400 transition-colors pr-8">
+                Q2: AI 会产生幻觉，不可靠怎么办？
+              </span>
+              <span id="chevron-1" class="text-slate-500 group-hover:text-cyan-500">▼</span>
+            </button>
+            <div id="answer-1" class="hidden overflow-hidden">
+              <div class="bg-slate-800/30 p-4 rounded-lg border-l-4 border-cyan-500 text-slate-300 leading-relaxed mb-6">
+                <strong>错误是真理的铺路石。</strong> 人类也会 P-hacking 和犯错。关键在于自我修正机制。A-Lab 的案例证明，AI 可以通过实验反馈闭环来修正自己的错误（否定之否定），这种迭代速度远超人类的同行评审。
+              </div>
+            </div>
+          </div>
+
+          <div class="border-b border-slate-700">
+            <button onclick="toggleFAQ(2)" class="w-full text-left py-6 flex items-center justify-between group focus:outline-none">
+              <span class="text-lg font-medium text-slate-200 group-hover:text-cyan-400 transition-colors pr-8">
+                Q3: 伦理和责任谁来承担？
+              </span>
+              <span id="chevron-2" class="text-slate-500 group-hover:text-cyan-500">▼</span>
+            </button>
+            <div id="answer-2" class="hidden overflow-hidden">
+              <div class="bg-slate-800/30 p-4 rounded-lg border-l-4 border-cyan-500 text-slate-300 leading-relaxed mb-6">
+                请区分<strong>"法律主体"</strong>与<strong>"科学主体"</strong>。自动驾驶出事故由厂商或保险负责，但不改变"车是 AI 在开"的事实。人类将从"运动员"退居为"裁判员"，负责伦理红线，而把探索的赛场完全交给 AI。
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="bg-gradient-to-b from-slate-900 to-slate-950 p-8 md:p-12 rounded-2xl border border-slate-800 text-center relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-500"></div>
+        <h2 class="text-3xl font-bold text-white mb-6">结语：拥抱必然的自由</h2>
+        <blockquote class="text-xl font-serif italic text-slate-400 mb-8 max-w-2xl mx-auto">
+          "自由是对必然的认识。" —— 恩格斯
+        </blockquote>
+        <p class="text-slate-300 leading-relaxed max-w-3xl mx-auto mb-8">
+          AI 取代人类科学家，不是物种的悲剧，而是生产力发展的客观规律。<br/>
+          当<strong>认知</strong>不再受限于生物带宽，当<strong>实验</strong>不再受限于肉体疲劳，当<strong>创造</strong>不再受限于路径依赖。<br/>
+          科学将迎来真正的寒武纪大爆发。在这个新时代，人类不再是垄断知识的祭司，而是构建智能神殿的建筑师。
+        </p>
+        <button 
+          onclick="showQRCode()"
+          class="bg-white text-slate-900 hover:bg-cyan-50 font-bold py-3 px-8 rounded-full transition-all transform hover:-translate-y-1 shadow-lg shadow-white/10 flex items-center justify-center gap-2 mx-auto"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm12 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z" />
+          </svg>
+          <span>扫码加入微信交流群</span>
+        </button>
+      </section>
+
+      <footer class="pt-12 border-t border-slate-800 text-xs text-slate-500 font-mono text-center">
+        <p>辩证法的硅基演进 | 2024</p>
+      </footer>
+    </main>
+  </div>
+
+  <!-- 二维码弹窗 -->
+  <div id="qrModal" class="hidden fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4" onclick="closeQRCode(event)">
+    <div class="bg-slate-900 rounded-2xl p-8 max-w-md w-full border border-cyan-500/30 shadow-2xl" onclick="event.stopPropagation()">
+      <div class="flex justify-between items-center mb-4">
+        <h3 class="text-xl font-bold text-white">微信交流群</h3>
+        <button onclick="closeQRCode()" class="text-slate-400 hover:text-white transition-colors text-2xl leading-none">
+          ✕
+        </button>
+      </div>
+      <div class="flex justify-center mb-4">
+        <img 
+          src="./assets/images/wechat-qrcode.jpg" 
+          alt="微信二维码" 
+          class="w-full max-w-xs rounded-lg border-2 border-cyan-500/30"
+          onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
+        />
+        <p class="text-slate-400 text-sm text-center hidden">
+          请将二维码图片保存为 <code class="text-cyan-400">wechat-qrcode.jpg</code> 并放在 assets/images/ 目录
+        </p>
+      </div>
+      <p class="text-slate-400 text-sm text-center">
+        使用微信扫一扫加入交流群
+      </p>
+    </div>
+  </div>
+
+  <script>
+    // FAQ 折叠功能
+    let openFAQ = -1;
+    function toggleFAQ(index) {
+      const answer = document.getElementById('answer-' + index);
+      const chevron = document.getElementById('chevron-' + index);
+      
+      if (openFAQ === index) {
+        answer.classList.add('hidden');
+        chevron.textContent = '▼';
+        openFAQ = -1;
+      } else {
+        // 关闭之前打开的
+        if (openFAQ !== -1) {
+          document.getElementById('answer-' + openFAQ).classList.add('hidden');
+          document.getElementById('chevron-' + openFAQ).textContent = '▼';
+        }
+        // 打开新的
+        answer.classList.remove('hidden');
+        chevron.textContent = '▲';
+        openFAQ = index;
+      }
+    }
+
+    // 二维码弹窗
+    function showQRCode() {
+      document.getElementById('qrModal').classList.remove('hidden');
+    }
+
+    function closeQRCode(event) {
+      if (!event || event.target.classList.contains('hidden') || event.target.onclick === closeQRCode || event.target.textContent === '✕') {
+        document.getElementById('qrModal').classList.add('hidden');
+      }
+    }
+
+    // 音频播放功能
+    const audioPlayer = document.getElementById('audioPlayer');
+    const playBtn = document.getElementById('playBtn');
+    const playIcon = document.getElementById('playIcon');
+    const pauseIcon = document.getElementById('pauseIcon');
+    const progressFill = document.getElementById('progressFill');
+    const progressBar = document.getElementById('progressBar');
+    const currentTimeEl = document.getElementById('currentTime');
+    const durationEl = document.getElementById('duration');
+    const volumeControl = document.getElementById('volumeControl');
+    const volumeValue = document.getElementById('volumeValue');
+
+    let isPlaying = false;
+    
+    // 音量控制
+    function updateVolumeDisplay() {
+      const volume = audioPlayer.volume;
+      volumeValue.textContent = Math.round(volume * 100) + '%';
+      const percent = volume * 100;
+      volumeControl.style.background = `linear-gradient(to right, #06b6d4 0%, #06b6d4 ${percent}%, #334155 ${percent}%, #334155 100%)`;
+    }
+    
+    volumeControl.addEventListener('input', (e) => {
+      const volume = parseFloat(e.target.value);
+      audioPlayer.volume = volume;
+      updateVolumeDisplay();
+      console.log('音量设置为:', Math.round(volume * 100) + '%');
+    });
+    
+    // 初始化音量显示
+    updateVolumeDisplay();
+
+    // 格式化时间
+    function formatTime(seconds) {
+      if (!seconds || isNaN(seconds)) return '0:00';
+      const mins = Math.floor(seconds / 60);
+      const secs = Math.floor(seconds % 60);
+      return `${mins}:${secs.toString().padStart(2, '0')}`;
+    }
+
+    // 更新进度条
+    let lastUpdateTime = 0;
+    function updateProgress() {
+      if (audioPlayer.duration && isFinite(audioPlayer.duration) && audioPlayer.duration > 0) {
+        const currentTime = audioPlayer.currentTime;
+        const percent = (currentTime / audioPlayer.duration) * 100;
+        
+        // 只有在非拖拽状态下才自动更新，避免拖拽时冲突
+        if (!isDragging) {
+          progressFill.style.width = percent + '%';
+          currentTimeEl.textContent = formatTime(currentTime);
+          lastUpdateTime = currentTime;
+        } else {
+          // 拖拽时只更新时间显示，不更新进度条位置（由 seekAudio 控制）
+          // 但需要检查实际播放位置是否跟随了
+          if (Math.abs(currentTime - lastUpdateTime) > 2) {
+            console.log('播放位置已更新:', formatTime(currentTime));
+            lastUpdateTime = currentTime;
+          }
+        }
+      }
+    }
+
+    // 更新总时长
+    function updateDuration() {
+      if (audioPlayer.duration) {
+        durationEl.textContent = formatTime(audioPlayer.duration);
+      }
+    }
+
+    // 播放/暂停切换
+    function togglePlay() {
+      if (isPlaying) {
+        audioPlayer.pause();
+        isPlaying = false;
+        playIcon.classList.remove('hidden');
+        pauseIcon.classList.add('hidden');
+      } else {
+        audioPlayer.play().then(() => {
+          isPlaying = true;
+          playIcon.classList.add('hidden');
+          pauseIcon.classList.remove('hidden');
+        }).catch(err => {
+          console.error('播放失败:', err);
+          alert('音频播放失败，请检查音频文件是否存在');
+        });
+      }
+    }
+
+    // 进度条点击和拖拽跳转
+    let isDragging = false;
+    
+    function seekAudio(event) {
+      // 等待音频元数据加载完成
+      if (!audioPlayer.duration || isNaN(audioPlayer.duration) || audioPlayer.duration === 0 || !isFinite(audioPlayer.duration)) {
+        console.log('音频未准备好，duration:', audioPlayer.duration, 'readyState:', audioPlayer.readyState);
+        // 如果元数据还没加载，尝试加载
+        if (audioPlayer.readyState < 2) {
+          audioPlayer.load();
+          // 等待元数据加载
+          audioPlayer.addEventListener('loadedmetadata', function onMetadataLoaded() {
+            audioPlayer.removeEventListener('loadedmetadata', onMetadataLoaded);
+            // 重新尝试跳转
+            seekAudio(event);
+          }, { once: true });
+        }
+        return;
+      }
+      
+      const rect = progressBar.getBoundingClientRect();
+      const clickX = event.clientX - rect.left;
+      const percent = Math.max(0, Math.min(1, clickX / rect.width));
+      const newTime = percent * audioPlayer.duration;
+      
+      console.log('设置播放位置:', formatTime(newTime), '/', formatTime(audioPlayer.duration), '百分比:', (percent * 100).toFixed(1) + '%');
+      
+      // 设置播放位置 - 使用更可靠的方法
+      try {
+        // 先更新显示
+        progressFill.style.width = (percent * 100) + '%';
+        currentTimeEl.textContent = formatTime(newTime);
+        
+        // 设置音频播放位置
+        const wasPlaying = !audioPlayer.paused;
+        
+        // 确保音频已加载足够数据以支持跳转
+        if (audioPlayer.readyState < 2) {
+          console.warn('音频数据未完全加载，尝试加载...');
+          audioPlayer.load();
+          // 等待数据加载后再设置
+          audioPlayer.addEventListener('canplay', function onCanPlay() {
+            audioPlayer.removeEventListener('canplay', onCanPlay);
+            audioPlayer.currentTime = newTime;
+            console.log('数据加载后设置 currentTime:', formatTime(newTime));
+          }, { once: true });
+          return;
+        }
+        
+        // 直接设置 currentTime
+        console.log('直接设置 currentTime 从', formatTime(audioPlayer.currentTime), '到', formatTime(newTime));
+        audioPlayer.currentTime = newTime;
+        
+        // 立即检查
+        const immediateTime = audioPlayer.currentTime;
+        console.log('设置后立即检查 currentTime:', formatTime(immediateTime));
+        
+        // 等待 seeked 事件确认跳转完成
+        let seekedFired = false;
+        const seekHandler = () => {
+          seekedFired = true;
+          const actualTime = audioPlayer.currentTime;
+          const timeDiff = Math.abs(actualTime - newTime);
+          console.log('✅ seeked 事件 - 实际位置:', formatTime(actualTime), '期望:', formatTime(newTime), '差异:', timeDiff.toFixed(2) + '秒');
+          
+          if (timeDiff > 0.5) {
+            console.warn('⚠️ 位置不准确，重试设置...');
+            audioPlayer.currentTime = newTime;
+          }
+          
+          // 如果之前正在播放，确保继续播放
+          if (wasPlaying && audioPlayer.paused) {
+            audioPlayer.play().catch(err => console.error('恢复播放失败:', err));
+          }
+        };
+        
+        audioPlayer.addEventListener('seeked', seekHandler, { once: true });
+        
+        // 备用检查：如果 seeked 事件没有触发
+        setTimeout(() => {
+          const actualTime = audioPlayer.currentTime;
+          const timeDiff = Math.abs(actualTime - newTime);
+          
+          if (!seekedFired) {
+            console.log('⚠️ seeked 事件未触发，使用延迟检查');
+          }
+          
+          if (timeDiff > 0.5) {
+            console.warn('⚠️ 延迟检查 - 位置可能未正确设置，实际:', formatTime(actualTime), '期望:', formatTime(newTime));
+            // 再次尝试设置
+            audioPlayer.currentTime = newTime;
+          } else {
+            console.log('✅ 位置设置成功:', formatTime(actualTime));
+          }
+          
+          // 如果之前正在播放，确保继续播放
+          if (wasPlaying && audioPlayer.paused) {
+            audioPlayer.play().catch(err => console.error('恢复播放失败:', err));
+          }
+        }, 300);
+        
+      } catch (error) {
+        console.error('设置播放位置失败:', error);
+      }
+    }
+    
+    // 点击事件
+    progressBar.addEventListener('click', (e) => {
+      e.stopPropagation();
+      seekAudio(e);
+    });
+    
+    // 鼠标拖拽事件
+    progressBar.addEventListener('mousedown', (e) => {
+      isDragging = true;
+      e.preventDefault();
+      e.stopPropagation();
+      seekAudio(e);
+    });
+    
+    document.addEventListener('mousemove', (e) => {
+      if (isDragging) {
+        e.preventDefault();
+        seekAudio(e);
+      }
+    });
+    
+    document.addEventListener('mouseup', () => {
+      if (isDragging) {
+        isDragging = false;
+        // 拖拽结束后，同步一次进度
+        updateProgress();
+      }
+    });
+    
+    // 触摸事件（移动端支持）
+    progressBar.addEventListener('touchstart', (e) => {
+      isDragging = true;
+      e.preventDefault();
+      const touch = e.touches[0];
+      const fakeEvent = { clientX: touch.clientX };
+      seekAudio(fakeEvent);
+    });
+    
+    document.addEventListener('touchmove', (e) => {
+      if (isDragging) {
+        e.preventDefault();
+        const touch = e.touches[0];
+        const fakeEvent = { clientX: touch.clientX };
+        seekAudio(fakeEvent);
+      }
+    });
+    
+    document.addEventListener('touchend', () => {
+      if (isDragging) {
+        isDragging = false;
+        // 拖拽结束后，同步一次进度
+        updateProgress();
+      }
+    });
+
+    // 音频事件监听
+    audioPlayer.addEventListener('loadedmetadata', () => {
+      console.log('✅ 音频元数据加载完成，时长:', formatTime(audioPlayer.duration), 'readyState:', audioPlayer.readyState);
+      updateDuration();
+    });
+    
+    audioPlayer.addEventListener('canplay', () => {
+      console.log('✅ 音频可以播放，readyState:', audioPlayer.readyState);
+    });
+    
+    audioPlayer.addEventListener('canplaythrough', () => {
+      console.log('✅ 音频可以完整播放，readyState:', audioPlayer.readyState);
+    });
+    
+    // 监听 timeupdate 事件更新进度
+    audioPlayer.addEventListener('timeupdate', () => {
+      if (!isDragging) {
+        updateProgress();
+      }
+    });
+    
+    audioPlayer.addEventListener('seeked', () => {
+      console.log('✅ seeked 事件 - 跳转完成，当前位置:', formatTime(audioPlayer.currentTime));
+      if (!isDragging) {
+        updateProgress();
+      }
+    });
+    
+    audioPlayer.addEventListener('seeking', () => {
+      console.log('🔄 seeking 事件 - 正在跳转...');
+    });
+    
+    audioPlayer.addEventListener('ended', () => {
+      isPlaying = false;
+      playIcon.classList.remove('hidden');
+      pauseIcon.classList.add('hidden');
+      audioPlayer.currentTime = 0;
+      progressFill.style.width = '0%';
+    });
+    
+    audioPlayer.addEventListener('error', (e) => {
+      console.error('音频加载错误:', e, audioPlayer.error);
+      currentTimeEl.textContent = '加载失败';
+      durationEl.textContent = '--:--';
+    });
+    
+    // 确保音频加载
+    audioPlayer.load();
+
+
+    // 初始化显示
+    updateDuration();
+    
+    // 检查页面是否加载
+    console.log('页面已加载');
+    console.log('当前URL:', window.location.href);
+    console.log('音频文件路径:', audioPlayer.src);
+    
+    // 检查音频文件是否存在
+    audioPlayer.addEventListener('error', function(e) {
+      console.warn('默认音频文件加载失败，可以使用"更换音频"按钮上传本地文件');
+      durationEl.textContent = '未加载';
+    }, { once: true });
+  </script>
+</body>
+</html>
+
